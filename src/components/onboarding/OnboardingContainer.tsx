@@ -14,8 +14,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronRight, ArrowLeft, TrendingUp } from 'lucide-react';
-import { UserProfile, AppView } from '@/types';
+import { ChevronRight, ArrowLeft } from 'lucide-react';
+import { UserProfile } from '@/types';
 import { ONBOARDING_STEPS } from '@/config/constants';
 import WelcomeStep from './WelcomeStep';
 import ProfileStep from './ProfileStep';

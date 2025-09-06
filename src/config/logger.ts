@@ -74,7 +74,7 @@ interface LogEntry {
   level: LogType;
   category: string;
   message: string;
-  data?: any;
+  data?: unknown;
   userId?: string;
   sessionId?: string;
 }
@@ -85,7 +85,7 @@ const createLogEntry = (
   functionName: string,
   logType: LogType,
   message: string,
-  data?: any,
+  data?: unknown,
   userId?: string,
   sessionId?: string
 ): LogEntry => {
@@ -148,7 +148,7 @@ const log = (
   functionName: string,
   logType: LogType,
   message: string,
-  data?: any,
+  data?: unknown,
   userId?: string,
   sessionId?: string
 ): void => {
@@ -173,25 +173,25 @@ const log = (
 
 // Convenience functions for different log types
 export const logger = {
-  debug: (fileName: string, functionName: string, message: string, data?: any) =>
+  debug: (fileName: string, functionName: string, message: string, data?: unknown) =>
     log(fileName, functionName, LogType.DEBUG, message, data),
   
-  info: (fileName: string, functionName: string, message: string, data?: any) =>
+  info: (fileName: string, functionName: string, message: string, data?: unknown) =>
     log(fileName, functionName, LogType.INFO, message, data),
   
-  warn: (fileName: string, functionName: string, message: string, data?: any) =>
+  warn: (fileName: string, functionName: string, message: string, data?: unknown) =>
     log(fileName, functionName, LogType.WARN, message, data),
   
-  error: (fileName: string, functionName: string, message: string, data?: any) =>
+  error: (fileName: string, functionName: string, message: string, data?: unknown) =>
     log(fileName, functionName, LogType.ERROR, message, data),
   
-  security: (fileName: string, functionName: string, message: string, data?: any) =>
+  security: (fileName: string, functionName: string, message: string, data?: unknown) =>
     log(fileName, functionName, LogType.SECURITY, message, data),
   
-  hipaa: (fileName: string, functionName: string, message: string, data?: any) =>
+  hipaa: (fileName: string, functionName: string, message: string, data?: unknown) =>
     log(fileName, functionName, LogType.HIPAA, message, data),
   
-  telemetry: (fileName: string, functionName: string, message: string, data?: any) =>
+  telemetry: (fileName: string, functionName: string, message: string, data?: unknown) =>
     log(fileName, functionName, LogType.TELEMETRY, message, data)
 };
 

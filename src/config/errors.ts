@@ -69,7 +69,7 @@ export interface AppError {
   code: ErrorCode;
   message: string;
   userMessage: string;
-  details?: any;
+  details?: unknown;
   timestamp: string;
   stack?: string;
 }
@@ -179,7 +179,7 @@ const errorMessages: Record<ErrorCode, { message: string; userMessage: string }>
 export const createError = (
   type: ErrorType,
   code: ErrorCode,
-  details?: any,
+  details?: unknown,
   originalError?: Error
 ): AppError => {
   const errorInfo = errorMessages[code];
@@ -258,7 +258,7 @@ export const createAuthError = (code: ErrorCode): AppError => {
 };
 
 // Export error types and utilities
-export default {
+const errorUtils = {
   ErrorType,
   ErrorCode,
   createError,
@@ -267,3 +267,5 @@ export default {
   createNetworkError,
   createAuthError
 };
+
+export default errorUtils;

@@ -21,7 +21,7 @@ const FoodLog: React.FC = () => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-2xl font-bold heading-modern mb-1">Today's Log</h3>
+          <h3 className="text-2xl font-bold heading-modern mb-1">Today&apos;s Log</h3>
           <p className="subheading-modern">Your nutrition journey today</p>
         </div>
         <button className="premium-card px-4 py-2 text-emerald-600 hover:text-emerald-700 font-semibold transition-colors">
