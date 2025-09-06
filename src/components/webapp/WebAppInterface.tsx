@@ -16,7 +16,6 @@
 
 import React from 'react';
 import { UserProfile } from '@/types';
-import AppHeader from './AppHeader';
 import AppSidebar from './AppSidebar';
 import DashboardContent from './DashboardContent';
 
@@ -26,13 +25,9 @@ interface WebAppInterfaceProps {
 
 const WebAppInterface: React.FC<WebAppInterfaceProps> = ({ userProfile }) => {
   return (
-    <div className="min-h-screen">
-      <AppHeader userProfile={userProfile} />
-      
-      <div className="flex">
-        <AppSidebar />
-        <DashboardContent userProfile={userProfile} />
-      </div>
+    <div className="min-h-screen flex">
+      <AppSidebar userProfile={userProfile} />
+      <DashboardContent userProfile={userProfile} />
     </div>
   );
 };

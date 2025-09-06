@@ -42,23 +42,15 @@ const DashboardContent: React.FC<DashboardContentProps> = ({ userProfile }) => {
   };
 
   return (
-    <main className="flex-1 p-8 min-h-screen">
+    <main className="flex-1 p-8 min-h-screen overflow-y-auto">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Welcome Section */}
         <div className="mb-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-4xl font-bold heading-modern mb-2">
-                {getGreeting()}, {getUserName()}
-              </h2>
-              <p className="text-lg subheading-modern">Ready to fuel your pursuit today?</p>
-            </div>
-            <div className="premium-card px-6 py-3">
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-sm font-semibold text-gray-700">Live Tracking</span>
-              </div>
-            </div>
+          <div>
+            <h2 className="text-4xl font-bold heading-modern mb-2">
+              {getGreeting()}, {getUserName()}
+            </h2>
+            <p className="text-lg subheading-modern">Ready to fuel your pursuit today?</p>
           </div>
         </div>
 
