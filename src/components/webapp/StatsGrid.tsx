@@ -21,58 +21,80 @@ const StatsGrid: React.FC = () => {
     {
       label: 'Calories',
       icon: Apple,
-      color: 'text-red-500',
-      gradient: 'from-red-400 to-red-600',
+      iconClass: 'icon-container-calories',
+      gradient: 'linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%)',
       data: SAMPLE_DAILY_STATS.calories
     },
     {
       label: 'Protein',
       icon: Zap,
-      color: 'text-blue-500',
-      gradient: 'from-blue-400 to-blue-600',
+      iconClass: 'icon-container-protein',
+      gradient: 'linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%)',
       data: SAMPLE_DAILY_STATS.protein
     },
     {
       label: 'Sugar',
       icon: TrendingUp,
-      color: 'text-yellow-500',
-      gradient: 'from-yellow-400 to-yellow-600',
+      iconClass: 'icon-container-sugar',
+      gradient: 'linear-gradient(135deg, #feca57 0%, #ff9ff3 100%)',
       data: SAMPLE_DAILY_STATS.sugar
     },
     {
       label: 'Activity',
       icon: Activity,
-      color: 'text-green-500',
-      gradient: 'from-green-400 to-green-600',
+      iconClass: 'icon-container-activity',
+      gradient: 'linear-gradient(135deg, #48cae4 0%, #023e8a 100%)',
       data: SAMPLE_DAILY_STATS.activity
     }
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {stats.map((stat, index) => (
-        <div key={index} className="stat-card">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="stat-label">{stat.label}</h3>
-            <stat.icon className={`w-5 h-5 ${stat.color}`} />
+        <div key={index} className="stat-card-modern group">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h3 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-1">
+                {stat.label}
+              </h3>
+              <div className="text-xs text-gray-500">
+                {stat.data.percentage}% of goal
+              </div>
+            </div>
+            <div className={`icon-container-modern ${stat.iconClass}`}>
+              <stat.icon className="w-6 h-6 text-white" />
+            </div>
           </div>
-          <div className="space-y-2">
-            <div className="stat-value">
-              {stat.label === 'Activity' ? `${stat.data.current}min` : 
-               stat.label === 'Protein' ? `${stat.data.current}g` :
-               stat.label === 'Sugar' ? `${stat.data.current}g` :
-               stat.data.current}
+          
+          <div className="space-y-4">
+            <div className="flex items-baseline space-x-2">
+              <div className="text-3xl font-bold text-gray-900">
+                {stat.label === 'Activity' ? stat.data.current : 
+                 stat.label === 'Protein' ? stat.data.current :
+                 stat.label === 'Sugar' ? stat.data.current :
+                 stat.data.current}
+              </div>
+              <div className="text-sm font-medium text-gray-600">
+                {stat.label === 'Activity' ? 'min' : 
+                 stat.label === 'Protein' ? 'g' :
+                 stat.label === 'Sugar' ? 'g' :
+                 'kcal'}
+              </div>
+              <div className="text-xs text-gray-400 ml-auto">
+                / {stat.label === 'Activity' ? `${stat.data.target}min` :
+                   stat.label === 'Protein' ? `${stat.data.target}g` :
+                   stat.label === 'Sugar' ? `${stat.data.target}g` :
+                   stat.data.target}
+              </div>
             </div>
-            <div className="text-sm text-gray-500">
-              of {stat.label === 'Activity' ? `${stat.data.target}min goal` :
-                  stat.label === 'Protein' ? `${stat.data.target}g goal` :
-                  stat.label === 'Sugar' ? `${stat.data.target}g limit` :
-                  `${stat.data.target} goal`}
-            </div>
-            <div className="stat-progress">
+            
+            <div className="progress-modern">
               <div 
-                className={`stat-progress-fill bg-gradient-to-r ${stat.gradient}`}
-                style={{ width: `${stat.data.percentage}%` }}
+                className="progress-fill-modern"
+                style={{ 
+                  width: `${stat.data.percentage}%`,
+                  background: stat.gradient
+                }}
               />
             </div>
           </div>

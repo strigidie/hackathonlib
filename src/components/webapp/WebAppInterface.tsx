@@ -26,7 +26,7 @@ interface WebAppInterfaceProps {
 
 const WebAppInterface: React.FC<WebAppInterfaceProps> = ({ userProfile }) => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <AppHeader userProfile={userProfile} />
       
       <div className="flex">
