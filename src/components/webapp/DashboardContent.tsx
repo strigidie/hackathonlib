@@ -42,29 +42,29 @@ const DashboardContent: React.FC<DashboardContentProps> = ({ userProfile }) => {
   };
 
   return (
-    <main className="flex-1 p-8 min-h-screen overflow-y-auto">
-      <div className="max-w-7xl mx-auto space-y-8">
+    <main className="flex-1 p-4 sm:p-6 lg:p-8 min-h-screen overflow-y-auto w-full">
+      <div className="max-w-7xl mx-auto space-y-6 lg:space-y-8">
         {/* Welcome Section */}
-        <div className="mb-8">
+        <div className="mb-6 lg:mb-8">
           <div>
-            <h2 className="text-4xl font-bold heading-modern mb-2">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold heading-modern mb-2">
               {getGreeting()}, {getUserName()}
             </h2>
-            <p className="text-lg subheading-modern">Ready to fuel your pursuit today?</p>
+            <p className="text-base lg:text-lg subheading-modern">Ready to fuel your pursuit today?</p>
           </div>
         </div>
 
         {/* Stats Grid */}
         <StatsGrid />
 
-        <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8">
           {/* Quick Actions */}
-          <div className="xl:col-span-1">
+          <div className="lg:col-span-1 order-2 lg:order-1">
             <QuickActions />
           </div>
 
           {/* Recent Foods */}
-          <div className="xl:col-span-3">
+          <div className="lg:col-span-3 order-1 lg:order-2">
             <FoodLog />
           </div>
         </div>

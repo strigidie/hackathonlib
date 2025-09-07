@@ -28,6 +28,9 @@ interface OnboardingContainerProps {
 const OnboardingContainer: React.FC<OnboardingContainerProps> = ({ onComplete }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<UserProfile>({
+    firstName: '',
+    lastName: '',
+    profilePicture: '',
     age: '',
     sex: 'Male',
     location: '',
@@ -67,7 +70,7 @@ const OnboardingContainer: React.FC<OnboardingContainerProps> = ({ onComplete })
       case 'welcome':
         return true;
       case 'profile':
-        return !!(formData.age && formData.sex && formData.location);
+        return !!(formData.firstName && formData.lastName && formData.age && formData.sex && formData.location);
       case 'targets':
         return !!formData.target;
       default:

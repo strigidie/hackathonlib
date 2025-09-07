@@ -427,7 +427,21 @@ p {
   .stat-card {
     padding: 1rem;
   }
+  
+  .stat-card-modern {
+    padding: 1rem;
+  }
+  
+  .premium-card {
+    padding: 1rem;
+  }
+  
+  .action-button-modern {
+    padding: 0.75rem 1rem;
+  }
 }
+
+
 
 /* Focus Styles for Accessibility */
 .btn:focus-visible,
@@ -656,14 +670,21 @@ p {
 
 /* Icon Containers */
 .icon-container-modern {
-  width: 48px;
-  height: 48px;
+  min-width: 32px;
+  min-height: 32px;
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .icon-container-modern {
+    min-width: 48px;
+    min-height: 48px;
+  }
 }
 
 .icon-container-calories {

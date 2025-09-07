@@ -5,8 +5,11 @@
 
 // User Profile Types
 export interface UserProfile {
+  firstName: string;
+  lastName: string;
+  profilePicture: string;
   age: string;
-  sex: 'Male' | 'Female';
+  sex: 'Male' | 'Female' | 'Non-binary' | 'Other' | 'Prefer not to say';
   location: string;
   target: HealthTarget;
 }

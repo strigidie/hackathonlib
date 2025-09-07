@@ -49,32 +49,32 @@ const StatsGrid: React.FC = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
       {stats.map((stat, index) => (
         <div key={index} className="stat-card-modern group">
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-4 lg:mb-6">
             <div>
-              <h3 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-1">
+              <h3 className="text-xs lg:text-sm font-semibold text-gray-600 uppercase tracking-wide mb-1">
                 {stat.label}
               </h3>
               <div className="text-xs text-gray-500">
                 {stat.data.percentage}% of goal
               </div>
             </div>
-            <div className={`icon-container-modern ${stat.iconClass}`}>
-              <stat.icon className="w-6 h-6 text-white" />
+            <div className={`icon-container-modern ${stat.iconClass} w-8 h-8 lg:w-12 lg:h-12`}>
+              <stat.icon className="w-4 h-4 lg:w-6 lg:h-6 text-white" />
             </div>
           </div>
           
-          <div className="space-y-4">
-            <div className="flex items-baseline space-x-2">
-              <div className="text-3xl font-bold text-gray-900">
+          <div className="space-y-3 lg:space-y-4">
+            <div className="flex items-baseline space-x-1 lg:space-x-2">
+              <div className="text-xl lg:text-3xl font-bold text-gray-900">
                 {stat.label === 'Activity' ? stat.data.current : 
                  stat.label === 'Protein' ? stat.data.current :
                  stat.label === 'Sugar' ? stat.data.current :
                  stat.data.current}
               </div>
-              <div className="text-sm font-medium text-gray-600">
+              <div className="text-xs lg:text-sm font-medium text-gray-600">
                 {stat.label === 'Activity' ? 'min' : 
                  stat.label === 'Protein' ? 'g' :
                  stat.label === 'Sugar' ? 'g' :
