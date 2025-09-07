@@ -21,19 +21,34 @@ const QuickActions: React.FC = () => {
       icon: Camera,
       title: 'Photo',
       description: 'Snap food or labels',
-      color: 'text-emerald-600'
+      color: 'text-emerald-600',
+      onClick: () => {
+        // TODO: Implement photo capture
+        console.log('Photo capture clicked');
+        alert('Photo capture feature coming soon!');
+      }
     },
     {
       icon: Mic,
       title: 'Voice',
       description: 'Tell us what you ate',
-      color: 'text-blue-600'
+      color: 'text-blue-600',
+      onClick: () => {
+        // TODO: Implement voice input
+        console.log('Voice input clicked');
+        alert('Voice input feature coming soon!');
+      }
     },
     {
       icon: Type,
       title: 'Text',
       description: 'Quick manual entry',
-      color: 'text-purple-600'
+      color: 'text-purple-600',
+      onClick: () => {
+        // TODO: Implement text input
+        console.log('Text input clicked');
+        alert('Text input feature coming soon!');
+      }
     }
   ];
 
@@ -48,6 +63,7 @@ const QuickActions: React.FC = () => {
         {actions.map((action, index) => (
           <button
             key={index}
+            onClick={action.onClick}
             className="action-button-modern w-full flex items-center space-x-3 lg:space-x-4 group p-3 lg:p-4"
           >
             <div className={`p-2 lg:p-3 rounded-2xl transition-all duration-300 ${
@@ -77,6 +93,7 @@ const QuickActions: React.FC = () => {
           </div>
         </div>
       </div>
+
     </div>
   );
 };
