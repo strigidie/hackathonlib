@@ -12,6 +12,8 @@ export interface UserProfile {
   sex: 'Male' | 'Female' | 'Non-binary' | 'Other' | 'Prefer not to say';
   location: string;
   target: HealthTarget;
+  height?: string; // Optional for API integration
+  weight?: string; // Optional for API integration
 }
 
 // Health Target Types

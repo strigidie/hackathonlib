@@ -23,9 +23,11 @@ import TargetsStep from './TargetsStep';
 
 interface OnboardingContainerProps {
   onComplete: (formData: UserProfile) => void;
+  isLoading?: boolean;
+  error?: string | null;
 }
 
-const OnboardingContainer: React.FC<OnboardingContainerProps> = ({ onComplete }) => {
+const OnboardingContainer: React.FC<OnboardingContainerProps> = ({ onComplete, isLoading = false, error = null }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<UserProfile>({
     firstName: '',
@@ -129,12 +131,22 @@ const OnboardingContainer: React.FC<OnboardingContainerProps> = ({ onComplete })
           </div>
         </div>
 
+        {/* Error Display */}
+        {error && (
+          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-2xl">
+            <p className="text-red-600 text-sm font-medium">{error}</p>
+          </div>
+        )}
+
         {/* Navigation */}
         <div className="flex justify-between items-center">
           {currentStep > 0 ? (
             <button
               onClick={prevStep}
-              className="flex items-center space-x-2 px-6 py-3 text-gray-600 hover:text-gray-800 transition-colors"
+              disabled={isLoading}
+              className={`flex items-center space-x-2 px-6 py-3 text-gray-600 hover:text-gray-800 transition-colors ${
+                isLoading ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
             >
               <ArrowLeft className="w-4 h-4" />
               <span className="font-medium">Back</span>
@@ -145,15 +157,24 @@ const OnboardingContainer: React.FC<OnboardingContainerProps> = ({ onComplete })
 
           <button
             onClick={nextStep}
-            disabled={!isStepComplete()}
+            disabled={!isStepComplete() || isLoading}
             className={`btn btn-primary flex items-center space-x-3 ${
-              !isStepComplete() ? 'opacity-50 cursor-not-allowed' : ''
+              !isStepComplete() || isLoading ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >
-            <span className="text-lg">
-              {currentStep === ONBOARDING_STEPS.length - 1 ? 'Enter Foodiet' : 'Continue'}
-            </span>
-            <ChevronRight className="w-5 h-5" />
+            {isLoading ? (
+              <>
+                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                <span className="text-lg">Creating Profile...</span>
+              </>
+            ) : (
+              <>
+                <span className="text-lg">
+                  {currentStep === ONBOARDING_STEPS.length - 1 ? 'Enter Foodiet' : 'Continue'}
+                </span>
+                <ChevronRight className="w-5 h-5" />
+              </>
+            )}
           </button>
         </div>
       </div>
